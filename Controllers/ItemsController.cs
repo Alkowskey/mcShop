@@ -11,16 +11,17 @@ namespace mcShopServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class ItemsController : ControllerBase
     {
         private readonly ShoppingContext context;
 
-        public UsersController(ShoppingContext _context){
+        public ItemsController(ShoppingContext _context){
             context = _context;
         }
 
-        // GET api/users
+        // GET api/items
         [HttpGet]
-        public IQueryable<User> Get() => context.getAllUsers();
+        public IQueryable<Item> getItems() => context.getAllItems();
+        
     }
 }
