@@ -22,5 +22,13 @@ namespace mcShopServer.Controllers
         // GET api/users
         [HttpGet]
         public IQueryable<User> Get() => context.getAllUsers();
+
+        [HttpPost("getUser")]
+        public User getUserById([FromBody]int id) => context.getUserById(id);
+
+        [HttpPost("addUser")]
+        public User addUser([FromBody]User user) => context.addUser(user);
+
+
     }
 }

@@ -22,6 +22,9 @@ namespace mcShopServer.Controllers
         // GET api/items
         [HttpGet]
         public IQueryable<Item> getItems() => context.getAllItems();
+
+        [HttpPost("getItem")]
+        public Item getUserById([FromBody]int id) => context.getItemById(id);
         
     }
 }
