@@ -28,11 +28,7 @@ namespace mcShopServer.Controllers
         public Item getUserById([FromBody]long id) => context.getItemById(id);
 
         [HttpPost("addItem")]
-        public Item addUser([FromBody]ItemParser itemParser) {
-            Item item = new Item(itemParser, context.getUserById(itemParser.UserId));
-
-            return context.addItem(item);
-        }
+        public Item addUser([FromBody]ItemParser itemParser) => context.addItem(new Item(itemParser, context.getUserById(itemParser.UserId)));
         
     }
 }
