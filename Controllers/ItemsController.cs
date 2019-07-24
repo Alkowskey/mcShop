@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using mcShopServer.Context;
 
+using mcShopServer.Context;
 using mcShopServer.Models;
+using mcShopServer.Serialized;
 
 namespace mcShopServer.Controllers
 {
@@ -24,7 +25,14 @@ namespace mcShopServer.Controllers
         public IQueryable<Item> getItems() => context.getAllItems();
 
         [HttpPost("getItem")]
-        public Item getUserById([FromBody]int id) => context.getItemById(id);
+        public Item getUserById([FromBody]long id) => context.getItemById(id);
+
+        [HttpPost("addItem")]
+        public Item addUser([FromBody]ItemParser itemParser) {
+            Item item = new Item(itemParser, context.getUserById(itemParser.UserId));
+
+            return context.addItem(item);
+        }
         
     }
 }

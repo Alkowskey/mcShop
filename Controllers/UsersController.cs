@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using mcShopServer.Context;
 
+using mcShopServer.Context;
 using mcShopServer.Models;
 
 namespace mcShopServer.Controllers
@@ -24,7 +24,7 @@ namespace mcShopServer.Controllers
         public IQueryable<User> Get() => context.getAllUsers();
 
         [HttpPost("getUser")]
-        public User getUserById([FromBody]int id) => context.getUserById(id);
+        public User getUserById([FromBody]long id) => context.getUserById(id);
 
         [HttpPost("addUser")]
         public User addUser([FromBody]User user) => context.addUser(user);

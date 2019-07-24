@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using mcShopServer.Serialized;
 
 namespace mcShopServer.Models{
     public class Item{
@@ -16,6 +17,10 @@ namespace mcShopServer.Models{
 
         public Item(string mcItemId, string mcItemName, long itemQuantity, long itemPrice, User user):
         this(mcItemId, mcItemName, itemQuantity, itemPrice){
+            User = user;
+        }
+
+        public Item(ItemParser itemParser, User user):this(itemParser.McItemId, itemParser.McItemName, itemParser.ItemQuantity, itemParser.ItemPrice){
             User = user;
         }
         

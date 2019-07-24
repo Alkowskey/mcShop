@@ -31,7 +31,7 @@ namespace mcShopServer.Context
             return Users.Include(u => u.McItems);
         }
 
-        public User getUserById(int id){
+        public User getUserById(long id){
             return Users.Include(u => u.McItems).FirstOrDefault(u => u.UserId == id);
         }
 
@@ -47,12 +47,14 @@ namespace mcShopServer.Context
             return Items.Include(i => i.User);
         }
 
-        public Item getItemById(int id){
+        public Item getItemById(long id){
             return Items.Include(i => i.User).FirstOrDefault(i => i.ItemId == id);
         }
 
         public Item addItem(Item item){
             Items.Add(item);
+
+            this.SaveChanges();
 
             return item;
         }
