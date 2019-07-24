@@ -43,12 +43,30 @@ namespace mcShopServer.Context
             return user;
         }
 
+        public void removeUserById(long id){
+            User usr = getUserById(id);
+
+            if(usr!=null){
+                Users.Remove(usr);
+                this.SaveChanges();
+            }
+        }
+
         public IQueryable<Item> getAllItems(){
             return Items.Include(i => i.User);
         }
 
         public Item getItemById(long id){
             return Items.Include(i => i.User).FirstOrDefault(i => i.ItemId == id);
+        }
+
+        public void removeItemById(long id){
+            Item itm = getItemById(id);
+
+            if(itm!=null){
+                Items.Remove(itm);
+                this.SaveChanges();
+            }
         }
 
         public Item addItem(Item item){

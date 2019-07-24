@@ -29,6 +29,11 @@ namespace mcShopServer.Controllers
         [HttpPost("addUser")]
         public User addUser([FromBody]User user) => context.addUser(user);
 
+        [HttpDelete("removeUser")]
+        public void removeUser([FromBody]long id) {
+            context.removeUserById(id);
+        }
+
 
     }
 }
