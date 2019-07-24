@@ -1,0 +1,14 @@
+/home/alek/dotnetcore/mcShopServer/mcShopServer/bin/Debug/netcoreapp2.2/mcShopServer.deps.json
+/home/alek/dotnetcore/mcShopServer/mcShopServer/bin/Debug/netcoreapp2.2/mcShopServer.runtimeconfig.json
+/home/alek/dotnetcore/mcShopServer/mcShopServer/bin/Debug/netcoreapp2.2/mcShopServer.runtimeconfig.dev.json
+/home/alek/dotnetcore/mcShopServer/mcShopServer/bin/Debug/netcoreapp2.2/mcShopServer.dll
+/home/alek/dotnetcore/mcShopServer/mcShopServer/bin/Debug/netcoreapp2.2/mcShopServer.pdb
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.csprojAssemblyReference.cache
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.csproj.CoreCompileInputs.cache
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.RazorAssemblyInfo.cache
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.RazorAssemblyInfo.cs
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.AssemblyInfoInputs.cache
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.AssemblyInfo.cs
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.RazorTargetAssemblyInfo.cache
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.dll
+/home/alek/dotnetcore/mcShopServer/mcShopServer/obj/Debug/netcoreapp2.2/mcShopServer.pdb
