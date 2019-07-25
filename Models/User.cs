@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace mcShopServer.Models{
     [Owned]
     public class User{
+
         [Required]
         public long UserId { get; set; }
         [Required]

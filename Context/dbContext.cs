@@ -57,7 +57,7 @@ namespace mcShopServer.Context
         }
 
         public IQueryable<Item> getAllItems(){
-            return Items.Include(i => i.User);
+            return Items.Include(i => i.User).Include(i => i.ItemPrice).Where(i => i.ItemPrice != null);
         }
 
         public Item getItemById(long id){

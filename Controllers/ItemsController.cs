@@ -28,7 +28,18 @@ namespace mcShopServer.Controllers
         public Item getUserById([FromBody]long id) => context.getItemById(id);
 
         [HttpPost("addItem")]
-        public Item addItem([FromBody]ItemParser itemParser) => context.addItem(new Item(itemParser, context.getUserByUsername(itemParser.Username)));
+        public Item addItem([FromBody]ItemParser itemParser) { 
+            User user = context.getUserByUsername(itemParser.Username);
+            if(user == null){
+                user = new User();
+                user.McUserId = itemParser.Username;
+                user.McUsername = itemParser.Username;
+
+                context.SaveChanges();
+            }
+
+            return context.addItem(new Item(itemParser, context.getUserByUsername(itemParser.Username), itemParser.ItemPrice));
+        }
 
         [HttpDelete("removeItem")]
         public void removeItem([FromBody]long id) {

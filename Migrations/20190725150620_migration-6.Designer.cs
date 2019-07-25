@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mcShopServer.Context;
@@ -9,9 +10,10 @@ using mcShopServer.Context;
 namespace mcShopServer.Migrations
 {
     [DbContext(typeof(ShoppingContext))]
-    partial class ShoppingContextModelSnapshot : ModelSnapshot
+    [Migration("20190725150620_migration-6")]
+    partial class migration6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,7 @@ namespace mcShopServer.Migrations
 
                     b.Property<DateTime>("DateOfCreation");
 
-                    b.Property<long?>("ItemPriceItemId");
+                    b.Property<long>("ItemPriceItemId");
 
                     b.Property<long>("ItemQuantity");
 
@@ -67,7 +69,8 @@ namespace mcShopServer.Migrations
                 {
                     b.HasOne("mcShopServer.Models.Item", "ItemPrice")
                         .WithMany()
-                        .HasForeignKey("ItemPriceItemId");
+                        .HasForeignKey("ItemPriceItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("mcShopServer.Models.User", "User")
                         .WithMany("McItems")
