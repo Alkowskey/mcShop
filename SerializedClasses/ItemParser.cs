@@ -7,7 +7,7 @@ namespace mcShopServer.Serialized{
         public string McItemName { get; set; }
         public long ItemQuantity {get;set;}
         public long ItemPrice{get;set;}
-        public long UserId {get;set;}
+        public string Username {get;set;}
         
     }
 }

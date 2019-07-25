@@ -28,11 +28,17 @@ namespace mcShopServer.Controllers
         public Item getUserById([FromBody]long id) => context.getItemById(id);
 
         [HttpPost("addItem")]
-        public Item addUser([FromBody]ItemParser itemParser) => context.addItem(new Item(itemParser, context.getUserById(itemParser.UserId)));
+        public Item addItem([FromBody]ItemParser itemParser) => context.addItem(new Item(itemParser, context.getUserByUsername(itemParser.Username)));
 
         [HttpDelete("removeItem")]
         public void removeItem([FromBody]long id) {
             context.removeItemById(id);
+        }
+
+        [HttpGet("removeAll")]
+
+        public void removeAllItems(){
+            context.removeAllItems();
         }
         
     }

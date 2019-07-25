@@ -25,6 +25,7 @@ namespace mcShopServer.Context
             modelBuilder.Entity<User>()
                 .HasMany(u => u.McItems)
                 .WithOne(i => i.User);
+
         }
 
         public IQueryable<User> getAllUsers(){
@@ -34,6 +35,10 @@ namespace mcShopServer.Context
         public User getUserById(long id){
             return Users.Include(u => u.McItems).FirstOrDefault(u => u.UserId == id);
         }
+        
+        public User getUserByUsername(string username){
+            return Users.Include(u => u.McItems).FirstOrDefault(u => u.McUsername == username);
+        }
 
         public User addUser(User user){
             Users.Add(user);
@@ -42,7 +47,6 @@ namespace mcShopServer.Context
 
             return user;
         }
-
         public void removeUserById(long id){
             User usr = getUserById(id);
 
@@ -75,6 +79,12 @@ namespace mcShopServer.Context
             this.SaveChanges();
 
             return item;
+        }
+
+        public void removeAllItems(){
+            Items.RemoveRange(Items);
+
+            this.SaveChanges();
         }
     }
 }
