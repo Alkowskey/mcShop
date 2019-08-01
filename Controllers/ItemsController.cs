@@ -25,7 +25,7 @@ namespace mcShopServer.Controllers
         public IQueryable<Item> getItems() => context.getAllItems();
 
         [HttpPost("getItem")]
-        public Item getItemById([FromBody]long id) => context.getItemById(id);
+        public Item getItemById([FromBody]IdParser idParser) => context.getItemById(idParser.id);
 
         [HttpGet("getItems")]
         public IQueryable<Item> getItemByUsername([FromQuery]string username) => context.getItemsByUsername(username);
@@ -45,8 +45,8 @@ namespace mcShopServer.Controllers
         }
 
         [HttpPost("removeItem")]
-        public void removeItem([FromBody]RemoveParser removeParser) {
-            context.removeItemById(removeParser.id);
+        public void removeItem([FromBody]IdParser idParser) {
+            context.removeItemById(idParser.id);
         }
 
         [HttpGet("removeAll")]

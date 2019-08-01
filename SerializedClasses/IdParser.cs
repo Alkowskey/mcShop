@@ -1,5 +1,5 @@
 namespace mcShopServer.Serialized{
-    public class RemoveParser{
+    public class IdParser{
         public long id{get;set;}
 
     }

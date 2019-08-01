@@ -9,11 +9,12 @@ using mcShopServer.Models;
 namespace mcShopServer.Models{
     [Owned]
     public class Item{
-        private Item(string mcItemId, string mcItemName, long itemQuantity, string enchantments, long itemPrice){
+        private Item(string mcItemId, string mcItemName, long itemQuantity, string enchantments, long itemPrice, long itemDurability){
             McItemId = mcItemId;
             McItemName = mcItemName;
             ItemQuantity = itemQuantity;
             ItemPrice = itemPrice;
+            ItemDurability = itemDurability;
 
             DateOfCreation = DateTime.Now;
 
@@ -21,13 +22,13 @@ namespace mcShopServer.Models{
 
         }
 
-        public Item(string mcItemId, string mcItemName, long itemQuantity, long itemPrice, User user, string enchantments):
-        this(mcItemId, mcItemName, itemQuantity, enchantments, itemPrice){
+        public Item(string mcItemId, string mcItemName, long itemQuantity, long itemPrice, User user, string enchantments, long itemDurability):
+        this(mcItemId, mcItemName, itemQuantity, enchantments, itemPrice, itemDurability){
             User = user;
         }
 
         public Item(ItemParser itemParser, User user):
-        this(itemParser.McItemId, itemParser.McItemName, itemParser.ItemQuantity, itemParser.Enchantments, itemParser.ItemPrice){
+        this(itemParser.McItemId, itemParser.McItemName, itemParser.ItemQuantity, itemParser.Enchantments, itemParser.ItemPrice, itemParser.ItemDurability){
             User = user;
         }
         public Item(){}
@@ -40,6 +41,7 @@ namespace mcShopServer.Models{
         public string McItemName { get; set; }
         [Required]
         public long ItemQuantity {get;set;}
+        public long ItemDurability {get;set;}
         public long ItemPrice{get;set;}
         public User User {get;set;}
         public DateTime DateOfCreation{get;set;}

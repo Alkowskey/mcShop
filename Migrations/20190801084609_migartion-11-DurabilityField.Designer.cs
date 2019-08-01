@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mcShopServer.Context;
@@ -9,9 +10,10 @@ using mcShopServer.Context;
 namespace mcShopServer.Migrations
 {
     [DbContext(typeof(ShoppingContext))]
-    partial class ShoppingContextModelSnapshot : ModelSnapshot
+    [Migration("20190801084609_migartion-11-DurabilityField")]
+    partial class migartion11DurabilityField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,9 @@ namespace mcShopServer.Migrations
 
                     b.Property<DateTime>("DateOfCreation");
 
-                    b.Property<string>("Enchantments");
+                    b.Property<long>("Durablity");
 
-                    b.Property<long>("ItemDurability");
+                    b.Property<string>("Enchantments");
 
                     b.Property<long>("ItemPrice");
 

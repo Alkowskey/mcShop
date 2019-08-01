@@ -58,14 +58,11 @@ namespace mcShopServer.Context
 
         public IQueryable<Item> getItemsByUsername(string username) => Items
             .Include(i => i.User)
-            .Include(i => i.ItemPrice)
             .Where(i => i.User.McUsername == username);
 
         public IQueryable<Item> getAllItems(){
             return Items
-            .Include(i => i.User)
-            .Include(i => i.ItemPrice)
-            .Where(i => i.ItemPrice != null);
+            .Include(i => i.User);
         }
 
         public Item getItemById(long id){
