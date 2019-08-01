@@ -25,7 +25,10 @@ namespace mcShopServer.Controllers
         public IQueryable<Item> getItems() => context.getAllItems();
 
         [HttpPost("getItem")]
-        public Item getUserById([FromBody]long id) => context.getItemById(id);
+        public Item getItemById([FromBody]long id) => context.getItemById(id);
+
+        [HttpGet("getItems")]
+        public IQueryable<Item> getItemByUsername([FromQuery]string username) => context.getItemsByUsername(username);
 
         [HttpPost("addItem")]
         public Item addItem([FromBody]ItemParser itemParser) { 
@@ -38,12 +41,12 @@ namespace mcShopServer.Controllers
                 context.SaveChanges();
             }
 
-            return context.addItem(new Item(itemParser, context.getUserByUsername(itemParser.Username), itemParser.ItemPrice));
+            return context.addItem(new Item(itemParser, context.getUserByUsername(itemParser.Username)));
         }
 
-        [HttpDelete("removeItem")]
-        public void removeItem([FromBody]long id) {
-            context.removeItemById(id);
+        [HttpPost("removeItem")]
+        public void removeItem([FromBody]RemoveParser removeParser) {
+            context.removeItemById(removeParser.id);
         }
 
         [HttpGet("removeAll")]

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mcShopServer.Context;
@@ -9,9 +10,10 @@ using mcShopServer.Context;
 namespace mcShopServer.Migrations
 {
     [DbContext(typeof(ShoppingContext))]
-    partial class ShoppingContextModelSnapshot : ModelSnapshot
+    [Migration("20190728081910_migrate-9")]
+    partial class migrate9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,14 +21,30 @@ namespace mcShopServer.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("mcShopServer.Models.Enchantment", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Enchant");
+
+                    b.Property<long?>("ItemId");
+
+                    b.Property<int>("Level");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Enchantments");
+                });
+
             modelBuilder.Entity("mcShopServer.Models.Item", b =>
                 {
                     b.Property<long>("ItemId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateOfCreation");
-
-                    b.Property<string>("Enchantments");
 
                     b.Property<long?>("ItemPriceItemId");
 
@@ -63,6 +81,13 @@ namespace mcShopServer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("mcShopServer.Models.Enchantment", b =>
+                {
+                    b.HasOne("mcShopServer.Models.Item")
+                        .WithMany("Enchantments")
+                        .HasForeignKey("ItemId");
                 });
 
             modelBuilder.Entity("mcShopServer.Models.Item", b =>
