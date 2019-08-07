@@ -6,17 +6,31 @@ import { AppComponent } from './app.component';
 import { ShopMainComponent } from './shop-main/shop-main.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+import {MaterialModule} from './material-module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShopMainComponent
+    ShopMainComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
   ],
   providers: [
 
@@ -24,3 +38,5 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

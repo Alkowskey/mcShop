@@ -10,6 +10,9 @@ export class ShopMainComponent implements OnInit {
 
   Items: Object;
 
+  title = "McShop";
+  
+
   constructor(private itemsService: ItemsService) { }
 
   loadItems(){
