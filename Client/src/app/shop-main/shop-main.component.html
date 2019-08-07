@@ -1,3 +1,67 @@
-<ul *ngFor="let item of Items">
-    <li>{{item.McItemName}}</li>
-</ul>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let row"> {{row.ItemId}} </td>
+      </ng-container>
+  
+      <!-- McItemId Column -->
+      <ng-container matColumnDef="Przedmiot">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Przedmiot </th>
+        <td mat-cell *matCellDef="let row"> <img src="assets/McItems/{{row.McItemId}}-0.png"> </td>
+      </ng-container>
+  
+      <!-- McItemName Column -->
+      <ng-container matColumnDef="Nazwa_przedmiotu">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa przedmiotu </th>
+        <td mat-cell *matCellDef="let row"> {{row.McItemName.replace("_", " ").toLowerCase()}} </td>
+      </ng-container>
+  
+      <!-- ItemQuanity Column -->
+      <ng-container matColumnDef="Liczba">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Liczba </th>
+        <td mat-cell *matCellDef="let row"> {{row.ItemQuantity}} </td>
+      </ng-container>
+
+      <!-- ItemDurability Column -->
+      <ng-container matColumnDef="Trwałość">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Trwałość </th>
+        <td mat-cell *matCellDef="let row"> {{row.ItemDurability}} </td>
+      </ng-container>
+
+      <!-- ItemPrice Column -->
+      <ng-container matColumnDef="Cena">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+        <td mat-cell *matCellDef="let row"> {{row.ItemPrice}} </td>
+      </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Kup </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" aria-label="Buy item">
+                <mat-icon>shopping_basket</mat-icon>
+            </button>
+        </td>
+
+    </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+  
+    <div class="FormAndPagi">
+        <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100, 200]"></mat-paginator>
+    </div>
+  </div>
+  
+  
+  <!-- Copyright 2019 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

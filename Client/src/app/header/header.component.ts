@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   title = "McShop";
-  desc = "Twój najlepszy sklep minecraft"
+  desc = "jedyny taki sklep minecraft"
   constructor() { }
 
   ngOnInit() {

@@ -10,6 +10,6 @@ export class ItemsService {
 
 
   getAllItems(){
-    return this.http.get("http://127.0.0.1:5001/api/items");
+    return this.http.get("http://192.168.88.197:5001/api/items");
   }
 }
